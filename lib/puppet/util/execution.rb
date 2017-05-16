@@ -245,6 +245,8 @@ module Puppet::Util::Execution
             rescue EOFError
             end
 
+            output.force_encoding(Encoding.default_external)
+            output.encode!
             exit_status = results.last.exitstatus
           end
           child_pid = nil
